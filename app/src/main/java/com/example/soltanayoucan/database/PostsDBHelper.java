@@ -77,28 +77,9 @@ public class PostsDBHelper extends SQLiteOpenHelper {
         return dataPostModels;
     }
 
-    /*public ArrayList<DataPostModel> getAllPosts() {
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        ArrayList<DataPostModel> dataObjects = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+PostsTable.InnerTable.TABLE_NAME, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-
-            DataPostModel dataObject = new DataPostModel(
-                    cursor.getInt(0),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getString(3),
-                    cursor.getString(4));
-            dataObjects.add(dataObject);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return dataObjects;
-    }*/
 
     public void removeAllPosts() {
         db = this.getWritableDatabase();
-        db.execSQL("delete from "+ PostsTable.InnerTable.TABLE_NAME);
+        db.execSQL("delete from " + PostsTable.InnerTable.TABLE_NAME);
     }
 }
