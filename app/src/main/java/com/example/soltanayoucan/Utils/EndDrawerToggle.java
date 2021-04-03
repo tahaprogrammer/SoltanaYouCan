@@ -16,6 +16,8 @@ import com.example.soltanayoucan.R;
 
 public class EndDrawerToggle implements DrawerLayout.DrawerListener {
 
+    //This Class Change the position of the icon in Action Bar
+
     private DrawerLayout drawerLayout;
     private DrawerArrowDrawable arrowDrawable;
     private AppCompatImageButton toggleButton;

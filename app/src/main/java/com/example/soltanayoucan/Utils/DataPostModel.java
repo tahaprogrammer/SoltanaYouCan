@@ -2,6 +2,7 @@ package com.example.soltanayoucan.Utils;
 
 public class DataPostModel {
 
+    //Data Model
     private int id;
     private String id_post;
     private String date_gmt;

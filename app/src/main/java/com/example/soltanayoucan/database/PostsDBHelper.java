@@ -13,8 +13,11 @@ import java.util.ArrayList;
 
 public class PostsDBHelper extends SQLiteOpenHelper {
 
+    //Database name
     private static final String DATABASE_NAME = "PostsDatabase.db";
+    //Database version
     private static final int DATABASE_VERSION = 1;
+    //Database instance
     private SQLiteDatabase db;
 
     public PostsDBHelper(Context context) {
@@ -23,6 +26,7 @@ public class PostsDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //Create Table for the Posts
         this.db = db;
         final String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE " +
                 PostsTable.InnerTable.TABLE_NAME + " ( " +
@@ -42,6 +46,7 @@ public class PostsDBHelper extends SQLiteOpenHelper {
     }
 
     public void insertPostsToDB() {
+        //this code insert Data to SQLite
         db = getWritableDatabase();
         for (int i = 0; i < Variables.dataPostModels.size(); i++) {
             ContentValues contentValues = new ContentValues();
@@ -54,6 +59,7 @@ public class PostsDBHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<DataPostModel> getAllPosts() {
+        //this code for get All Data From SQLite and put it into ArrayList
         ArrayList<DataPostModel> dataPostModels = new ArrayList<>();
         db = getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + PostsTable.InnerTable.TABLE_NAME, null);
@@ -79,6 +85,7 @@ public class PostsDBHelper extends SQLiteOpenHelper {
 
 
     public void removeAllPosts() {
+        //Remove All data from SQLite
         db = this.getWritableDatabase();
         db.execSQL("delete from " + PostsTable.InnerTable.TABLE_NAME);
     }

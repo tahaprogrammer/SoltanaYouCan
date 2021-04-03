@@ -22,6 +22,7 @@ public class RecyclerAdapterHomeListTop extends RecyclerView.Adapter<RecyclerAda
         public RecyclerHolder(@NonNull View itemView, OnListClickListener mListener) {
             super(itemView);
             imageView_top_list = itemView.findViewById(R.id.image_view_home_top_list);
+            //On Click Listener for the View
             imageView_top_list.setOnClickListener(v -> {
                 if (mListener != null) {
                     if (getAdapterPosition() != RecyclerView.NO_POSITION) {

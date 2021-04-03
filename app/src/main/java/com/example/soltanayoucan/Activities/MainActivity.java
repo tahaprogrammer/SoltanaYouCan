@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             if(postsDBHelper.getAllPosts().size() != 0) {
                 postsDBHelper.removeAllPosts();
             }
+            //insert data to SQLite
             postsDBHelper.insertPostsToDB();
         }
 
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateListPosts() {
+        //Update RecyclerView
         boolean ending = recyclerAdapterListPosts.addMorePosts(listSize);
         if (ending) {
             imageView_add_more_posts.setVisibility(View.GONE);
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void SetupToolBar() {
+        //Setup ToolBar and Icon And drawer
         Toolbar toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -99,10 +102,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialRecyclerViewListPosts() {
+        //Setup RecyclerView for Posts
         RecyclerView recyclerView_posts = findViewById(R.id.recycler_view_list_posts);
         recyclerAdapterListPosts = new RecyclerAdapterListPosts(listSize);
         recyclerView_posts.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_posts.setAdapter(recyclerAdapterListPosts);
+
         recyclerAdapterListPosts.setLickingListener(new OnListClickListenerView() {
             @Override
             public void onClicking(int position, ImageView shareView) {
@@ -111,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     return;
                 }
+                //this code for Animation ImageView to the next Activity
                 ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, shareView, ViewCompat.getTransitionName(shareView));
                 intent.putExtra(Constants.EXTRA_DATA_CONTENT, position);
                 startActivity(intent, optionsCompat.toBundle());
@@ -119,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialRecyclerViewTopList() {
+        //Setup RecyclerView for the Top Menu
         RecyclerView recyclerView_top_list = findViewById(R.id.recycler_view_list_top);
         recyclerView_top_list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
         RecyclerAdapterHomeListTop recyclerAdapterHomeListTop = new RecyclerAdapterHomeListTop();

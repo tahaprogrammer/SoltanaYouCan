@@ -31,6 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
 
+        //Create GET request to get the JSON file and change it to Java Objects and into ArrayList
         JsonArrayRequest createJsonRequest = new JsonArrayRequest(Request.Method.GET, Constants.BASE_URL_POSTS, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -43,6 +44,7 @@ public class SplashActivity extends AppCompatActivity {
                         JSONObject title = singlePost.getJSONObject(Constants.TITLE);
                         JSONObject content = singlePost.getJSONObject(Constants.CONTENT);
 
+                        //insert data to ArrayList
                         DataPostModel dataPostModel = new DataPostModel(
                                 i,
                                 singlePost.getString(Constants.ID),

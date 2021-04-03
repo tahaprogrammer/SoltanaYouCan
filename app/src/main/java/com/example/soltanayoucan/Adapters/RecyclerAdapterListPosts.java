@@ -29,10 +29,12 @@ public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapt
         public RecyclerHolder(@NonNull View itemView, OnListClickListenerView lickingListener) {
             super(itemView);
 
+            //Views initialization
             textView_post_title = itemView.findViewById(R.id.text_view_item_posts_title);
             textView_post_date = itemView.findViewById(R.id.text_view_item_posts_date);
             imageView_shared = itemView.findViewById(R.id.image_view_item_post_header);
 
+            //OnClickListener
             itemView.findViewById(R.id.layout_post_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,6 +79,7 @@ public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapt
     }
 
     public boolean addMorePosts(int listSize) {
+        //This code add More items to the RecyclerView
         boolean ending = false;
         this.listSize = listSize;
         if (this.listSize >= Variables.dataPostModels.size()) {
