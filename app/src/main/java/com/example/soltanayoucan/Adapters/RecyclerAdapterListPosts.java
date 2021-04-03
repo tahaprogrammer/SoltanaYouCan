@@ -15,6 +15,11 @@ import com.example.soltanayoucan.Utils.Variables;
 public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapterListPosts.RecyclerHolder> {
 
     private OnListClickListenerView lickingListener;
+    private int listSize;
+
+    public RecyclerAdapterListPosts(int listSize) {
+        this.listSize = listSize;
+    }
 
     static class RecyclerHolder extends RecyclerView.ViewHolder {
         TextView textView_post_title;
@@ -59,7 +64,7 @@ public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapt
 
     @Override
     public int getItemCount() {
-        return Variables.dataPostModels.size();
+        return listSize;
     }
 
     private String changeDateFormat(String date) {
@@ -69,5 +74,16 @@ public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapt
 
     public void setLickingListener(OnListClickListenerView lickingListener) {
         this.lickingListener = lickingListener;
+    }
+
+    public boolean addMorePosts(int listSize) {
+        boolean ending = false;
+        this.listSize = listSize;
+        if (this.listSize >= Variables.dataPostModels.size()) {
+            this.listSize = Variables.dataPostModels.size();
+            ending = true;
+        }
+        notifyDataSetChanged();
+        return ending;
     }
 }

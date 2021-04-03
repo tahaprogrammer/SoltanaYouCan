@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">SoltanaYouCan</string>
+    <string name="app_name">سلطانة</string>
 
 
     <string name="test"> إلى الرحمن وفدا</string>
-
     <string name="share">شارك</string>
-
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

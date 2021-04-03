@@ -17,4 +17,7 @@ public class Constants {
 
     //Send Extra Data to Content Activity
     public static final String EXTRA_DATA_CONTENT = "extra_data_content";
+
+    //this number increase the number of add more posts
+    public static final int ADD_MORE_POSTS = 3;
 }
