@@ -21,19 +21,34 @@ import com.example.soltanayoucan.Adapters.RecyclerAdapterListPosts;
 import com.example.soltanayoucan.R;
 import com.example.soltanayoucan.Utils.Constants;
 import com.example.soltanayoucan.Utils.EndDrawerToggle;
+import com.example.soltanayoucan.Utils.Variables;
+import com.example.soltanayoucan.database.PostsDBHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
     private int listSize = 3;
     private RecyclerAdapterListPosts recyclerAdapterListPosts;
-    private RecyclerView recyclerView_posts;
     private ImageView imageView_add_more_posts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //offline mode Get Data From SQLite and put it in List
+        if (Variables.OffLineMode) {
+            if (!getDataFromSQLite()) {
+                return;
+            }
+        } else {
+            //This is online Mode we are going to copy all data to SQLite database
+            PostsDBHelper postsDBHelper = new PostsDBHelper(this);
+            if(postsDBHelper.getAllPosts().size() != 0) {
+                postsDBHelper.removeAllPosts();
+            }
+            postsDBHelper.insertPostsToDB();
+        }
 
         SetupToolBar();
         initialRecyclerViewTopList();
@@ -48,6 +63,17 @@ public class MainActivity extends AppCompatActivity {
                 updateListPosts();
             }
         });
+    }
+
+    private boolean getDataFromSQLite() {
+        PostsDBHelper postsDBHelper = new PostsDBHelper(this);
+        if (postsDBHelper.getAllPosts().size() == 0) {
+            Toast.makeText(this, "There no Data Available!", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            Variables.dataPostModels = postsDBHelper.getAllPosts();
+            return true;
+        }
     }
 
     private void updateListPosts() {
@@ -73,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialRecyclerViewListPosts() {
-        recyclerView_posts = findViewById(R.id.recycler_view_list_posts);
+        RecyclerView recyclerView_posts = findViewById(R.id.recycler_view_list_posts);
         recyclerAdapterListPosts = new RecyclerAdapterListPosts(listSize);
         recyclerView_posts.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_posts.setAdapter(recyclerAdapterListPosts);

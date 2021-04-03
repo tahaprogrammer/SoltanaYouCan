@@ -8,6 +8,7 @@ public class DataPostModel {
     private String title;
     private String content;
 
+
     public DataPostModel(int id, String id_post, String date_gmt, String title, String content) {
         this.id = id;
         this.id_post = id_post;
@@ -34,5 +35,9 @@ public class DataPostModel {
 
     public String getContent() {
         return content;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -2,6 +2,7 @@ package com.example.soltanayoucan.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,17 +52,19 @@ public class SplashActivity extends AppCompatActivity {
 
                         Variables.dataPostModels.add(dataPostModel);
 
-                        launchActivity();
-
                     } catch (JSONException e) {
                         Toast.makeText(SplashActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
+
+                launchActivity();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(SplashActivity.this, getString(R.string.there_is_no_internet), Toast.LENGTH_LONG).show();
+                Variables.OffLineMode = true;
+                launchActivity();
             }
         });
 
