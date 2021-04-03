@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         boolean ending = recyclerAdapterListPosts.addMorePosts(listSize);
         if (ending) {
             imageView_add_more_posts.setVisibility(View.GONE);
+        } else {
+            Toast.makeText(this, getString(R.string.add_successfully), Toast.LENGTH_SHORT).show();
         }
         //recyclerView_posts.scrollToPosition(recyclerAdapterListPosts.getItemCount() - 1);
     }

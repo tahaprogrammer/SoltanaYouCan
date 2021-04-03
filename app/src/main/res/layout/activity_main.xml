@@ -17,6 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/image_view_add_more_posts"
             android:orientation="vertical">
 
             <include layout="@layout/tool_bar" />
@@ -36,17 +37,19 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_list_posts"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <ImageView
-                android:id="@+id/image_view_add_more_posts"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_add_more_posts" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
+
+        <ImageView
+            android:id="@+id/image_view_add_more_posts"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_add_more_posts" />
 
     </RelativeLayout>
 

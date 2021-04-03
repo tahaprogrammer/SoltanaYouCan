@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.example.soltanayoucan.R;
 import com.example.soltanayoucan.Utils.Constants;
 import com.example.soltanayoucan.Utils.DataPostModel;
@@ -56,22 +57,21 @@ public class SplashActivity extends AppCompatActivity {
                         Toast.makeText(SplashActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(SplashActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(SplashActivity.this, getString(R.string.there_is_no_internet), Toast.LENGTH_LONG).show();
             }
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(createJsonRequest);
-
     }
 
     private void launchActivity() {
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        Animatoo.animateSlideLeft(this);
         finish();
     }
 
