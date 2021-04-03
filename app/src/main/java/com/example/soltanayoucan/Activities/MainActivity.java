@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.soltanayoucan.Adapters.OnListClickListener;
 import com.example.soltanayoucan.Adapters.RecyclerAdapterHomeListTop;
+import com.example.soltanayoucan.Adapters.RecyclerAdapterListPosts;
 import com.example.soltanayoucan.R;
 import com.example.soltanayoucan.Utils.Constants;
 
@@ -20,6 +20,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initialRecyclerViewTopList();
+
+        initialRecyclerViewListPosts();
+
+    }
+
+    private void initialRecyclerViewListPosts() {
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_list_posts);
+        RecyclerAdapterListPosts recyclerAdapterListPosts = new RecyclerAdapterListPosts();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(recyclerAdapterListPosts);
     }
 
     private void initialRecyclerViewTopList() {
