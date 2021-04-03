@@ -14,4 +14,7 @@ public class Constants {
     public static final String TITLE = "title";
     public static final String RENDERED = "rendered";
     public static final String CONTENT = "content";
+
+    //Send Extra Data to Content Activity
+    public static final String EXTRA_DATA_CONTENT = "extra_data_content";
 }

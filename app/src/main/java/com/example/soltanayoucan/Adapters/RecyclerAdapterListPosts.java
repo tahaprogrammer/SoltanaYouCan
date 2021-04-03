@@ -3,6 +3,7 @@ package com.example.soltanayoucan.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,15 +14,30 @@ import com.example.soltanayoucan.Utils.Variables;
 
 public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapterListPosts.RecyclerHolder> {
 
+    private OnListClickListenerView lickingListener;
 
     static class RecyclerHolder extends RecyclerView.ViewHolder {
         TextView textView_post_title;
         TextView textView_post_date;
+        ImageView imageView_shared;
 
-        public RecyclerHolder(@NonNull View itemView) {
+        public RecyclerHolder(@NonNull View itemView, OnListClickListenerView lickingListener) {
             super(itemView);
+
             textView_post_title = itemView.findViewById(R.id.text_view_item_posts_title);
             textView_post_date = itemView.findViewById(R.id.text_view_item_posts_date);
+            imageView_shared = itemView.findViewById(R.id.image_view_item_post_header);
+
+            itemView.findViewById(R.id.layout_post_container).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (lickingListener != null) {
+                        if (getAdapterPosition() != RecyclerView.NO_POSITION) {
+                            lickingListener.onClicking(getAdapterPosition(), imageView_shared);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -31,7 +47,7 @@ public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapt
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_posts_home, parent, false);
 
-        return new RecyclerHolder(view);
+        return new RecyclerHolder(view, lickingListener);
     }
 
     @Override
@@ -49,5 +65,9 @@ public class RecyclerAdapterListPosts extends RecyclerView.Adapter<RecyclerAdapt
     private String changeDateFormat(String date) {
         String[] split = date.split("T");
         return split[0];
+    }
+
+    public void setLickingListener(OnListClickListenerView lickingListener) {
+        this.lickingListener = lickingListener;
     }
 }

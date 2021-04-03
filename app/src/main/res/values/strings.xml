@@ -2,6 +2,8 @@
     <string name="app_name">SoltanaYouCan</string>
 
 
-    <string name="test">strongالمتقين إلى الرحمن وفدا</string>
+    <string name="test"> إلى الرحمن وفدا</string>
+
+    <string name="share">شارك</string>
 
 </resources>

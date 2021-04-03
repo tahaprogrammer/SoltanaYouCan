@@ -7,6 +7,7 @@
 
 
     <LinearLayout
+        android:id="@+id/layout_post_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -21,14 +22,11 @@
                 android:layout_height="170dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:background="@android:color/darker_gray" />
+                android:background="@android:color/darker_gray"
+                android:scaleType="center"
+                android:src="@drawable/next_media_icon"
+                android:transitionName="example_transition" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:src="@drawable/next_media_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
