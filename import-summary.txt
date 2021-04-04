@@ -1,0 +1,22 @@
+================================
+Import project to Android studio|
+================================
+you need Android Studio version "4.1.3"->Download the project and Extract it and click "open  an Existing Project"
+and select the project.
+wait the gradle to finish.
+
+==========================
+how can we run the project|
+==========================
+After you import the project, now you can click on the top bar "Build"->"Build Bundle/Apk"->"Build Apk", and you can copy the apk and the phone.
+or you can run it automatically, before you have to connect your phone with the computer and you can Click the Run Button .
+
+======================
+How to use the project|
+======================
+There are 4 folders in the package, each folder for a task.
+1)"activities"==> this folder Contain all the activities of the application
+2)"adapters"  ==> all the Lists inside the application are setting up by this folder, contain all adapters 
+3)"database"  ==> this Folder Contain SQLite database to store all database come from URL to the phone (locally).
+4)"Utils"    ==> here is all tools like variables and Constants like (BASE_URL,Names,Sizes...)
+
